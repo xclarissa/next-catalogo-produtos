@@ -1,9 +1,10 @@
 interface ProductProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export async function generateMetadata({ params }: ProductProps) {
-  const response = await fetch(`https://fakestoreapi.com/products/${params.id}`);
+  const { id } = await params;
+  const response = await fetch(`https://fakestoreapi.com/products/${id}`);
   const product = await response.json();
 
   return {
@@ -16,7 +17,8 @@ export async function generateMetadata({ params }: ProductProps) {
 export const revalidate = 60; // ISR: revalida a cada 60s
 
 export default async function ProductDetail({ params }: ProductProps) {
-  const response = await fetch(`https://fakestoreapi.com/products/${params.id}`);
+  const { id } = await params;
+  const response = await fetch(`https://fakestoreapi.com/products/${id}`);
   const product = await response.json();
 
   return (
