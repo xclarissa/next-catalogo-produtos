@@ -9,7 +9,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = await fetch(`https://fakestoreapi.com/products/${id}`).then((res) =>
     res.json()
   );
-  //   const product = await response.json();
 
   return {
     // injetado no head do html para melhorar SEO
