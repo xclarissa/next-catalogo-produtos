@@ -1,4 +1,5 @@
 import { Product } from "@/types/Product";
+import Image from "next/image";
 
 export default async function Home() {
   const response = await fetch("https://fakestoreapi.com/products", {
@@ -15,7 +16,7 @@ export default async function Home() {
           className="border rounded-lg p-4 shadow bg-white hover:shadow-lg transition"
         >
           <h2 className="font-bold text-gray-600">{product.title}</h2>
-          <img className="mx-auto block" src={product.image} alt="Foto do produto" width={250} height={400} />
+          <Image className="mx-auto block" src={product.image} alt="Foto do produto" width={250} height={400} />
           <p className="text-sm text-gray-600">${product.price}</p>
           <a
             href={`/products/${product.id}`}
