@@ -1,11 +1,15 @@
-interface PageProps {
-  params: { id: string };
-}
+import type { Metadata } from "next";
 
-export async function generateMetadata({ params }: PageProps) {
-  const { id } = params;
-  const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-  const product = await response.json();
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  const product = await fetch(`https://fakestoreapi.com/products/${id}`).then((res) =>
+    res.json()
+  );
+  //   const product = await response.json();
 
   return {
     // injetado no head do html para melhorar SEO
@@ -14,10 +18,12 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
+export default function Page({ params }: Props) {}
+
 export const revalidate = 60; // ISR: revalida a cada 60s
 
-export default async function Page({ params }: PageProps) {
-  const { id } = params;
+export async function ProductDetail({ params }: Props) {
+  const { id } = await params;
   const response = await fetch(`https://fakestoreapi.com/products/${id}`);
   const product = await response.json();
 
