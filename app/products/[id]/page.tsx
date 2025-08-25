@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: ProductProps) {
 
 export const revalidate = 60; // ISR: revalida a cada 60s
 
-export default async function ProductDetail({ params }: ProductProps) {
+export default async function Page({ params }: ProductProps) {
   const { id } = params;
   const response = await fetch(`https://fakestoreapi.com/products/${id}`);
   const product = await response.json();
