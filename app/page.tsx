@@ -1,3 +1,4 @@
+import ServerFetch from "@/components/ServerFetch";
 import { Product } from "@/types/Product";
 import Image from "next/image";
 
@@ -10,7 +11,11 @@ export default async function Home() {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      {products.map((product: Product) => (
+       <div>
+          <h2>Home</h2>
+          <ServerFetch />
+        </div>
+      {/* {products.map((product: Product) => (
         <div
           key={product.id}
           className="border rounded-lg p-4 shadow bg-white hover:shadow-lg transition"
@@ -25,7 +30,7 @@ export default async function Home() {
             Ver detalhes
           </a>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 }
