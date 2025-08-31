@@ -12,9 +12,7 @@ export default function RootLayout({
       <body className="bg-gray-100 text-gray-900">
         <header className="p-4 bg-blue-600 text-white font-bold">
           Catálogo de Produtos
-        </header>
-
-        <Menu />
+        </header> 
 
         <main className="p-6">{children}</main>
         <footer className="p-4 text-center text-sm text-gray-500">

@@ -1,3 +1,4 @@
+import Menu from "@/components/menu";
 import ServerFetch from "@/components/ServerFetch";
 import { Product } from "@/types/Product";
 import Image from "next/image";
@@ -10,11 +11,12 @@ export default async function Home() {
   const products = await response.json();
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-       <div>
-          <h2>Home</h2>
-          <ServerFetch />
-        </div>
+    <div>
+      <Menu />
+      <div className="mt-4">
+        <h2>Home</h2>
+        <ServerFetch />
+      </div>
       {/* {products.map((product: Product) => (
         <div
           key={product.id}
