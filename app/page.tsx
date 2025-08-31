@@ -1,3 +1,4 @@
+import Cookie from "@/components/cookie";
 import Menu from "@/components/menu";
 import ServerFetch from "@/components/ServerFetch";
 import { Product } from "@/types/Product";
@@ -15,6 +16,7 @@ export default async function Home() {
       <Menu />
       <div className="mt-4">
         <h2>Home</h2>
+        <Cookie />
         <ServerFetch />
       </div>
       {/* {products.map((product: Product) => (
